@@ -6,15 +6,12 @@
 <title>Rimskyのホームページ</title>
 <link rel="icon" href="tf.png" type="image/png">
 <style>
-/* ===== General Styles ===== */
 body {
     margin: 0;
     font-family: 'Segoe UI', 'Meiryo', Arial, sans-serif;
     background-color: #111; /* fallback background */
     color: #f0f0f0;
 }
-
-/* ===== Header with Animated Background ===== */
 header {
     position: relative;
     height: 250px;
@@ -25,65 +22,48 @@ header {
     overflow: hidden;
     border-bottom: 2px solid #ffcc00;
 }
-
-/* Rimsky image as header background */
-/* Header background animation fix */
 header::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
-    width: 120%;  /* extend width to avoid edge gap */
+    width: 120%;
     height: 100%;
     background-image: url('rimsky.png');
-    background-size: cover; /* fill the header area */
+    background-size: cover; 
     background-position: center;
     z-index: -1;
     opacity: 0;
     animation: fadeIn 3s forwards, slideBackground 20s linear infinite;
 }
-
-/* Header Text */
 header h1 {
     margin: 0;
     font-size: 2.5em;
     text-shadow: 2px 2px 6px #000;
     color:black;
 }
-
-/* Slow background slide animation with extended width */
 @keyframes slideBackground {
     0% { transform: translateX(0); }
-    50% { transform: translateX(-16.6666%); } /* -1/6 of width to avoid gap */
+    50% { transform: translateX(-16.6666%); }
     100% { transform: translateX(0); }
 }
-
-/* ===== Fade-in animation ===== */
 @keyframes fadeIn {
     to { opacity: 1; }
 }
-
-/* ===== Slow background slide animation ===== */
 @keyframes slideBackground {
     0% { transform: translateX(0); }
     50% { transform: translateX(-10%); }
     100% { transform: translateX(0); }
 }
-
-/* ===== Container ===== */
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 30px;
 }
-
-/* ===== Main Layout ===== */
 .main {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
 }
-
-/* ===== Sidebar ===== */
 .sidebar {
     flex: 1 1 300px;
     min-width: 250px;
@@ -92,7 +72,6 @@ header h1 {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
-
 .sidebar img {
     width: 100%;
     height: auto;
@@ -101,24 +80,19 @@ header h1 {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-
 .sidebar p, .sidebar a {
     margin: 6px 0;
     display: block;
     font-size: 1em;
 }
-
 .sidebar a {
     color: #ffcc00;
     text-decoration: none;
     transition: color 0.3s;
 }
-
 .sidebar a:hover {
     color: #00ffff;
 }
-
-/* ===== Content ===== */
 .content {
     flex: 2 1 600px;
     min-width: 300px;
@@ -127,42 +101,33 @@ header h1 {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
-
 .content h2 {
     border-bottom: 2px solid #ffcc00;
     padding-bottom: 6px;
     margin-top: 20px;
     color: #ffcc00;
 }
-
 .content ul {
     padding-left: 20px;
 }
-
 .content li {
     margin-bottom: 10px;
 }
-
 .content a {
     color: #00ffff;
     text-decoration: none;
     transition: color 0.3s;
 }
-
 .content a:hover {
     color: #ffcc00;
     text-decoration: underline;
 }
-
-/* ===== Disclaimer / Footer ===== */
 .disclaimer, footer {
     text-align: center;
     font-size: 0.9em;
     margin-top: 25px;
     color: #ccc;
 }
-
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .main {
         flex-direction: column;
@@ -174,16 +139,12 @@ header h1 {
 </style>
 </head>
 <body>
-
 <div class="container">
     <!-- Header Section with Animated Background -->
     <header>
         <h1>Rimskyのホームページ</h1>
     </header>
-
-    <!-- Main Flex Layout -->
     <div class="main">
-        <!-- Sidebar / Profile -->
         <aside class="sidebar">
             <img src="christmastree.gif" alt="Profile Image">
             <p><strong>Name:</strong> Rimsky.Yamatov</p>
@@ -195,8 +156,6 @@ header h1 {
             <p>TEL: 000-0000-0000 | FAX: 000-0000-0000</p>
             <p>Mail: <a href="mailto:Rimsky.Yamatov@gmail.com">Rimsky.Yamatov@gmail.com</a></p>
         </aside>
-
-        <!-- Main Content -->
         <main class="content">
             <section>
                 <div style="text-align:center; font-weight:bold; font-size:1.2em; margin-bottom:10px;">★★★ 最新情報 ★★★</div>
@@ -219,6 +178,12 @@ header h1 {
                     </ul>
             </section>
             <section>
+                <h2>・Service</h2>
+                    <ul>
+                        <li><a href="https://websry.netlify.app/cp" target="_blank">ホームページ作成サービス</a></li>
+                    </ul>
+            </section>
+            <section>
                 <h2>・Web</h2>
                 <ul>
                     <li><a href="https://websry.netlify.app/blog" target="_blank">ブログ</a>(GithubPages blog)</li>
@@ -226,18 +191,14 @@ header h1 {
                     <li><a href="https://websry.netlify.app/esoli" target="_blank">難解言語インタプリタ</a> <span style="color:red;">New!</span> (Esolang interpreter)</li>
                 </ul>
             </section>
-
             <section class="disclaimer">
                 <p><strong>Disclaimer:</strong> Unauthorized copying or use of content, text, and images is strictly prohibited. Quoting for summary sites is allowed. Please do not contact via email for inquiries.</p>
             </section>
         </main>
     </div>
-
-    <!-- Footer -->
     <footer>
         &copy; 2026 荒木知也
     </footer>
 </div>
-
 </body>
 </html>
