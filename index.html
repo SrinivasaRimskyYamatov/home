@@ -4,201 +4,248 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rimskyのホームページ</title>
-<link rel="icon" href="newtf.png" type="image/png">
+
+<link rel="icon" href="atf.png" type="image/png">
+
+<!-- ★PWA必須 -->
+<link rel="manifest" href="manifest.json">
+
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', 'Meiryo', Arial, sans-serif;
-    background-color: #111; /* fallback background */
-    color: #f0f0f0;
+body{
+    margin:0;
+    background:#000080;
+    color:white;
+    font-family:MS PGothic,sans-serif;
 }
-header {
-    position: relative;
-    height: 250px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-bottom: 2px solid #ffcc00;
+
+a{ color:#00ffff; }
+
+.container{
+    max-width:900px;
+    width:100%;
+    margin:auto;
 }
-header::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 120%;
-    height: 100%;
-    background-image: url('rimsky.png');
-    background-size: cover; 
-    background-position: center;
-    z-index: -1;
-    opacity: 0;
-    animation: fadeIn 3s forwards, slideBackground 20s linear infinite;
+
+header{
+    text-align:center;
+    border:2px solid yellow;
+    margin:10px 0;
 }
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 6px #000;
-    color:black;
+
+header img{
+    width:100%;
+    height:auto;
+    display:block;
 }
-@keyframes slideBackground {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(-16.6666%); }
-    100% { transform: translateX(0); }
+
+table{
+    width:100%;
+    border-collapse:collapse;
 }
-@keyframes fadeIn {
-    to { opacity: 1; }
+
+.sidebar{
+    width:250px;
+    vertical-align:top;
+    background:#202020;
+    border:1px solid white;
+    padding:10px;
 }
-@keyframes slideBackground {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(-10%); }
-    100% { transform: translateX(0); }
+
+.content{
+    vertical-align:top;
+    background:#000040;
+    border:1px solid white;
+    padding:10px;
 }
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px;
+
+h1,h2{
+    margin:5px 0;
 }
-.main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+
+h2{
+    color:yellow;
+    border-bottom:1px solid yellow;
 }
-.sidebar {
-    flex: 1 1 300px;
-    min-width: 250px;
-    background-color: rgba(50,50,50,0.9);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+
+img{
+    max-width:100%;
+    height:auto;
 }
-.sidebar img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+
+img.profile{
+    width:100%;
 }
-.sidebar p, .sidebar a {
-    margin: 6px 0;
-    display: block;
-    font-size: 1em;
+
+footer{
+    text-align:center;
+    margin:20px 0;
 }
-.sidebar a {
-    color: #ffcc00;
-    text-decoration: none;
-    transition: color 0.3s;
+
+@media (max-width:768px){
+table, tbody, tr, td{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
 }
-.sidebar a:hover {
-    color: #00ffff;
+
+.sidebar{ width:auto; margin-bottom:10px; }
+.content{ width:auto; }
 }
-.content {
-    flex: 2 1 600px;
-    min-width: 300px;
-    background-color: rgba(40,40,40,0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-.content h2 {
-    border-bottom: 2px solid #ffcc00;
-    padding-bottom: 6px;
-    margin-top: 20px;
-    color: #ffcc00;
-}
-.content ul {
-    padding-left: 20px;
-}
-.content li {
-    margin-bottom: 10px;
-}
-.content a {
-    color: #00ffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.content a:hover {
-    color: #ffcc00;
-    text-decoration: underline;
-}
-.disclaimer, footer {
-    text-align: center;
-    font-size: 0.9em;
-    margin-top: 25px;
-    color: #ccc;
-}
-@media (max-width: 768px) {
-    .main {
-        flex-direction: column;
-    }
-    .sidebar, .content {
-        min-width: 100%;
-    }
+
+/* ★インストールバー（YouTubeっぽい） */
+#installBar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background:#ffff00;
+    color:#000;
+    padding:10px;
+    display:none;
+    justify-content:space-between;
+    align-items:center;
+    z-index:9999;
 }
 </style>
 </head>
+
 <body>
-<div class="container">
-    <!-- Header Section with Animated Background -->
-    <header>
-        <h1>Rimskyのホームページ</h1>
-    </header>
-    <div class="main">
-        <aside class="sidebar">
-            <img src="christmastree.gif" alt="Profile Image">
-            <p><strong>Name:</strong> Rimsky.Yamatov</p>
-            <p><strong>Birthdate:</strong> 2012年6月7日</p>
-            <p><strong>Blood Type:</strong> S型</p>
-            <p><a href="https://www.youtube.com/@%D0%AF%D0%BC%D0%B0%D1%82%D0%BE%D0%B2/about" target="_blank">Profile</a></p>
-            <p><strong>Affiliation:</strong> 朝鮮労働党</p>
-            <p>〒100-0000 帝国領朝鮮半島 平壌市龍城区域龍城官邸</p>
-            <p>TEL: 000-0000-0000 | FAX: 000-0000-0000</p>
-            <p>Mail: <a href="mailto:Rimsky.Yamatov@gmail.com">Rimsky.Yamatov@gmail.com</a></p>
-        </aside>
-        <main class="content">
-            <section>
-                <div style="text-align:center; font-weight:bold; font-size:1.2em; margin-bottom:10px;">★★★ 最新情報 ★★★</div>
-                <h2>・YouTube</h2>
-                <ul>
-                    <li><a href="https://www.youtube.com/@%D0%AF%D0%BC%D0%B0%D1%82%D0%BE%D0%B2" target="_blank">Youtubeチャンネル[大和夫プログラミング]</a></li>
-                    <li><a href="https://www.youtube.com/@%E5%A4%A7%E5%92%8C%E5%A4%AB%E3%83%9D%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AF%E3%82%B9" target="_blank">Youtubeサブチャンネル[大和夫ポリティクス] <span style="color:red;">New!</span></a></li>
-                </ul>
-            </section>
-            <section>
-                <h2>・note</h2>
-                    <ul>
-                        <li><a href="https://note.com/rimsky_2672" target="_blank">noteアカウント Rimsky2672</a> (since March 2026)</li>
-                    </ul>
-            </section>
-            <section>
-                <h2>・GitHub</h2>
-                    <ul>
-                        <li><a href="https://github.com/srinivasarimskyyamatov" target="_blank">githubアカウント RimskyYamatov</a> (since March 2026)</li>
-                    </ul>
-            </section>
-            <section>
-                <h2>・Service</h2>
-                    <ul>
-                        <li><a href="http://cp.rimsky.f5.si" target="_blank">ホームページ作成サービス</a></li>
-                    </ul>
-            </section>
-            <section>
-                <h2>・Web</h2>
-                <ul>
-                    <li><a href="http://blog.rimsky.f5.si" target="_blank">ブログ</a>(GithubPages blog)</li>
-                    <li><a href="http://clw.rimsky.f5.si" target="_blank">言語公式サイト一覧</a>(Language official website)</li>
-                    <li><a href="http://esoli.rimsky.f5.si" target="_blank">難解言語インタプリタ</a> <span style="color:red;">New!</span> (Esolang interpreter)</li>
-                </ul>
-            </section>
-            <section class="disclaimer">
-                <p><strong>Disclaimer:</strong> Unauthorized copying or use of content, text, and images is strictly prohibited. Quoting for summary sites is allowed. Please do not contact via email for inquiries.</p>
-            </section>
-        </main>
-    </div>
-    <footer>
-        &copy; 2026 荒木知也
-    </footer>
+
+<!-- ★インストールバー -->
+<div id="installBar">
+    <span>このサイトをアプリとしてインストールできます</span>
+    <button onclick="installApp()">インストール</button>
 </div>
+
+<div class="container">
+
+<header>
+    <img src="rimsky.png" alt="Rimsky Banner">
+    <h1>大和夫のホームページ</h1>
+</header>
+
+<marquee>
+Welcome to Yamatov's homepage!
+</marquee>
+
+<table>
+<tr>
+
+<td class="sidebar">
+<img src="atf.png" class="profile" alt="ATF">
+
+<p><b>Name:</b> Rimsky.Yamatov</p>
+<p><b>Birthdate:</b> 2012年6月7日</p>
+<p><b>Blood Type:</b> S型</p>
+
+<p>
+<a href="https://www.youtube.com/@%D0%AF%D0%BC%D0%B0%D1%82%D0%BE%D0%B2/about">
+Profile
+</a>
+</p>
+
+<p><b>Affiliation:</b> 朝鮮労働党</p>
+
+<p>
+〒100-0000<br>
+帝国領朝鮮半島<br>
+平壌市龍城区域龍城官邸
+</p>
+
+<p>
+TEL: 000-0000-0000<br>
+FAX: 000-0000-0000
+</p>
+
+<p>
+<a href="mailto:Rimsky.Yamatov@gmail.com">
+Rimsky.Yamatov@gmail.com
+</a>
+</p>
+
+</td>
+
+<td class="content">
+
+<center><b>&gt;---最新情報---&lt;</b></center>
+
+<h2>YouTube</h2>
+
+<ul>
+<li><a href="https://www.youtube.com/@%D0%AF%D0%BC%D0%B0%D1%82%D0%BE%D0%B2">Youtubeチャンネル</a></li>
+<li><a href="https://www.youtube.com/@%E5%A4%A7%E5%92%8C%E5%A4%AB%E3%83%9D%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AF%E3%82%B9">サブチャンネル</a></li>
+</ul>
+
+<h2>note</h2>
+<ul>
+<li><a href="https://note.com/rimsky_2672">note</a></li>
+</ul>
+
+<h2>GitHub</h2>
+<ul>
+<li><a href="https://github.com/srinivasarimskyyamatov">GitHub</a></li>
+</ul>
+
+<h2>Service</h2>
+<ul>
+<li><a href="http://cp.rimsky.f5.si">ホームページ作成サービス</a></li>
+</ul>
+
+<h2>Web</h2>
+<ul>
+<li><a href="http://blog.rimsky.f5.si">ブログ</a></li>
+<li><a href="http://clw.rimsky.f5.si">言語一覧</a></li>
+<li><a href="http://esoli.rimsky.f5.si">インタプリタ</a></li>
+</ul>
+
+<hr>
+
+<center>
+<img src="rimsky.png">
+</center>
+
+<p><b>Disclaimer:</b><br>
+Unauthorized copying is prohibited.
+</p>
+
+</td>
+
+</tr>
+</table>
+
+<footer>
+<hr>
+Copyright (C) 2026 荒木知也
+</footer>
+
+</div>
+
+<script>
+// ★PWA登録
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+}
+
+// ★インストール制御
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    document.getElementById("installBar").style.display = "flex";
+});
+
+function installApp(){
+    if(deferredPrompt){
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+            deferredPrompt = null;
+            document.getElementById("installBar").style.display = "none";
+        });
+    }
+}
+</script>
+
 </body>
 </html>
