@@ -7,7 +7,6 @@
 
 <link rel="icon" href="atf.png" type="image/png">
 
-<!-- ★PWA必須 -->
 <link rel="manifest" href="manifest.json">
 
 <style>
@@ -91,31 +90,11 @@ table, tbody, tr, td{
 .sidebar{ width:auto; margin-bottom:10px; }
 .content{ width:auto; }
 }
-
-/* ★インストールバー（YouTubeっぽい） */
-#installBar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    background:#ffff00;
-    color:#000;
-    padding:10px;
-    display:none;
-    justify-content:space-between;
-    align-items:center;
-    z-index:9999;
-}
 </style>
 </head>
 
 <body>
 
-<!-- ★インストールバー -->
-<div id="installBar">
-    <span>このサイトをアプリとしてインストールできます</span>
-    <button onclick="installApp()">インストール</button>
-</div>
 
 <div class="container">
 
